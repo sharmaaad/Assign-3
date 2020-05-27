@@ -62,5 +62,12 @@ sd(sw$Circumf_2004_cm)
 sd(sw$Circumf_2019_cm)
 # For question 8, boxplot of tree circumference from 2004 to 2019 of northeast and southwest sites
 boxplot(ne$Circumf_2004_cm, ne$Circumf_2019_cm, sw$Circumf_2004_cm, sw$Circumf_2019_cm, names = c("ne2004", "ne2019", "sw2004", "sw2019"), ylab="circumference (m)", las=2, main= "Tree growth at two plantation sites")
-# For question 9, 
-
+# For question 9, mean growth over the past 10 years at each site
+# subtracting circumferences from year 2019 to 2004 0f both northeast and southwest sites
+ne$growth <-ne$Circumf_2019 - ne$Circumf_2004_cm
+head(ne)
+sw$growth <-sw$Circumf_2019 - sw$Circumf_2004_cm
+head(sw)
+# For question 10. using the t.test and wilcox.test functions to estimate the p-value that the 10 year growth
+t.test(sw$growth, ne$growth)
+wilcox.test(sw$growth, ne$growth)
